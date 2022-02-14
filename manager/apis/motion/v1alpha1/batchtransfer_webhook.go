@@ -47,7 +47,7 @@ var _ webhook.Defaulter = &BatchTransfer{}
 //nolint:gocyclo
 func (batchTransfer *BatchTransfer) Default() {
 	log.Printf("Defaulting batchtransfer %s", batchTransfer.Name)
-	if batchTransfer.Spec.Image == "" {
+	if len(batchTransfer.Spec.Image) == 0 {
 		// TODO check if can be removed after upgrading controller-gen to 0.5.0
 		batchTransfer.Spec.Image = batchTransferImage
 	}
